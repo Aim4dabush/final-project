@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col d-flex justify-content-center align-items-center mt-3">
+            <div class="card shadow p-3 mb-5 rounded">
+                <form [formGroup]="newUserForm" (ngSubmit)="onSave()">
+                    <div class="col-12">
+                        <label for="username">Username</label>
+                        <input type="text" formControlName="username" id="username" class="form-control">
+                        <div class="alert alert-danger" *ngIf="!newUserForm.get('username').valid && newUserForm.get('username').touched">Please create a username.</div>
+                    </div>
+                    <div class="col-12 my-3">
+                        <label for="password">Password</label>
+                        <input type="password" formControlName="password" id="password" class="form-control">
+                        <div class="alert alert-danger" *ngIf="!newUserForm.get('password').valid && newUserForm.get('password').touched">Please create a password.</div>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" style="color: #22FCF4;" [disabled]="!newUserForm.valid">Save</button>
+                    </div>
+                </form> 
+            </div>
+        </div>
+    </div>
+</div>

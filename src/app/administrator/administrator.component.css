@@ -1,0 +1,10 @@
+.card{
+    background-color: #6322FC;
+    color: #22FCF4;
+    width: 50rem;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+

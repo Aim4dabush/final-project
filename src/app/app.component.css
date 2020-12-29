@@ -1,0 +1,9 @@
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+main{
+    background-color: skyblue;
+    min-height: 100vh;
+}
+

@@ -1,0 +1,12 @@
+.card-footer{
+    background-color: #22FCF4;
+}
+
+.card-header{
+    background-color: #6322FC;
+    color: #22FCF4;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}

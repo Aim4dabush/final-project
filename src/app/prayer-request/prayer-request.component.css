@@ -1,0 +1,24 @@
+.card-header{
+    background-color: #6322FC;
+    color: #22FCF4;
+}
+
+.card-body{
+    background-color: #22FCF4;
+    height: 100%;
+}
+
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+select.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+textarea.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+
+

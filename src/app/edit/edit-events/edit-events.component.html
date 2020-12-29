@@ -1,0 +1,109 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-6 mt-3">
+            <div class="card text-center shadow rounded p-3">
+                <div class="card-header">ADD EVENTS</div>
+                <div class="card-body">
+                    <form [formGroup]="eventForm" (ngSubmit)="onAdd()">
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <label for="eventName">Event Name</label>
+                                <input type="text" formControlName="eventName" id="eventName" class="form-control">
+                                <div class="alert alert-danger" *ngIf="!eventForm.get('eventName').valid && eventForm.get('eventName').touched">Please enter event name.</div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="imageLink">Image URL</label>
+                                <input type="url" formControlName="imageLink" id="imageLink" class="form-control">
+                                <div class="alert alert-danger" *ngIf="!eventForm.get('imageLink').valid && eventForm.get('imageLink').touched">Please link an image.</div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label for="startTime">Start</label>
+                                <input type="time" formControlName="startTime" id="startTime" class="form-control">
+                                <div class="alert alert-danger" *ngIf="!eventForm.get('startTime').valid && eventForm.get('startTime').touched">Please enter a start time.</div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <label for="endTime">End</label>
+                                <input type="time" formControlName="endTime" id="endTime" class="form-control">
+                                <div class="alert alert-danger" *ngIf="!eventForm.get('endTime').valid && eventForm.get('endTime').touched">Please enter an end time.</div>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <label for="date">Date</label>
+                                <input type="date" formControlName="date" id="date" class="form-control">
+                                <div class="alert alert-danger" *ngIf="!eventForm.get('date').valid && eventForm.get('date').touched">Please enter a date.</div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="addressLink">Address URL</label>
+                                <input type="url" formControlName="addressLink" id="addressLink" class="form-control">
+                                <div class="alert alert-danger" *ngIf="!eventForm.get('addressLink').valid && eventForm.get('addressLink').touched">Please enter a google maps link.</div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="address">Address</label>
+                                <input type="text" formControlName="address" id="address" class="form-control">
+                                <div class="alert alert-danger" *ngIf="!eventForm.get('address').valid && eventForm.get('address').touched">Please enter an address.</div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <button type="submit" class="btn btn-success" [disabled]="!eventForm.valid">Add Event</button>
+                            </div>
+                        </div>
+                    </form>
+                    <h5 class="card-title mt-3">Instructions</h5>
+                    <p class="card-text">
+                        1. Image URL: Search for an image through Google images. Right click the image you want and select "Open image in new tab". Copy the web link at the top and paste it in box.
+                    </p>
+                    <p class="card-text">
+                        2. Start: Click on the clock symbol on the right to set start time of the event.
+                    </p>
+                    <p class="card-text">
+                        3. End: Click on the clock symbol on the right to set end time of the event.
+                    </p>
+                    <p class="card-text">
+                        4. Date: Click on calender symbol on the right to set the date of the event.
+                    </p>
+                    <p class="card-text">
+                        5. Address URL: Search the address in Google Maps. When Google finds the address copy the web link at the top and paste it in box.
+                    </p>
+                    <p class="card-text">
+                        6. Address: Simply enter the address of the event.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mt-3" *ngFor="let event of events; let i = index">
+            <div id="preview" class="card text-center shadow p-3 mb-5 bg-white rounded h-100">
+                <div class="row">
+                    <div class="col-12">
+                        <img class="img-fluid" [src]="event.imageLink" [alt]="event.eventName">
+                    </div>
+                    <div class="col-12">
+                        <div class="card-header">
+                            {{ event.eventName }}
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6 col-lg-3 mt-3">
+                                    <h5 class="card-title">Starts</h5>
+                                    <p class="card-text">{{ event.startTime }}</p>
+                                </div>
+                                <div class="col-6 col-lg-3 mt-3">
+                                    <h5 class="card-title">Ends</h5>
+                                    <p class="card-title">{{ event.endTime }}</p>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3 mt-3">
+                                    <h5 class="card-title">Date</h5>
+                                    <p class="card-text">{{ event.date }}</p>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-3 mt-3">
+                                    <h5 class="card-title">Address</h5>
+                                    <p class="card-text"><a [href]="event.addressLink">{{ event.address }}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-danger" (click)="onDelete(event.id)"><i class="fas fa-trash-alt"></i> Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
